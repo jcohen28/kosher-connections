@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'social_network',
         'USER': 'root',
-	'PASSWORD': 'shidduchim',
+	    'PASSWORD': 'shidduchim',
         'OPTIONS': {
             # Tell MySQLdb to connect with 'utf8mb4' character set
             'charset': 'utf8mb4',
@@ -133,3 +133,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = '/Users/jeffcohen/kosher_connections/media/'
+MEDIA_URL = '/media/'

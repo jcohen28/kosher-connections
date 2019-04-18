@@ -41,11 +41,19 @@ class MaritalStatusType(Enum):
     DIVORCED = 'Divorced'
     WIDOWED = 'Widowed'
 
+def headshot_file_name(instance, filename):
+    return '/'.join(['headshots', str(instance.user.id), filename])
+
+def resume_file_name(instance, filename):
+    return '/'.join(['resumes', str(instance.user.id), filename])
+
 class PersonalInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     affiliation = models.CharField(max_length=20, blank=True)
     birthdate = models.DateField()
     height = models.CharField(max_length=10, blank=True)
+    headshot = models.ImageField(null=True, blank=True, upload_to=headshot_file_name)
+    resume = models.FileField(null=True, blank=True, upload_to=resume_file_name)
     marital_status = models.CharField(max_length=20,
                                       choices=[(tag.name, tag.value) for tag in MaritalStatusType],
                                       default='SINGLE')

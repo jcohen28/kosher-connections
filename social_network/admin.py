@@ -1,16 +1,21 @@
-from django.contrib import admin
+from django.contrib.admin import AdminSite
 
 from .models import *
 
-admin.site.register(User)
-admin.site.register(PersonalInfo)
-admin.site.register(Address)
-admin.site.register(Phone)
-admin.site.register(Quality)
-admin.site.register(PersonalQuality)
-admin.site.register(SeekingQuality)
-admin.site.register(Endorsement)
-admin.site.register(Recommendation)
-admin.site.register(Relationship)
-admin.site.register(Family)
-admin.site.register(School)
+class KosherConnectionsAdminSite(AdminSite):
+    site_header = 'Kosher Connections'
+
+admin_site = KosherConnectionsAdminSite(name='kosher_connections_admin')
+
+admin_site.register(User)
+admin_site.register(PersonalInfo)
+admin_site.register(Address)
+admin_site.register(Phone)
+admin_site.register(Quality)
+admin_site.register(PersonalQuality)
+admin_site.register(SeekingQuality)
+admin_site.register(Endorsement)
+admin_site.register(Recommendation)
+admin_site.register(Relationship)
+admin_site.register(Family)
+admin_site.register(School)
