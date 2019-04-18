@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_mysql',
     'drf_generators',  # for django api code generation
     'rest_framework',
+    'social_network.apps.SocialNetworkConfig',
 ]
 
 MIDDLEWARE = [
