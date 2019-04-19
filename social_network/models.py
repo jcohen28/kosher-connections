@@ -30,6 +30,13 @@ class User(models.Model):
     last_name = models.CharField(max_length=50)
     status = models.CharField(max_length=10, choices=[(tag.name, tag.value) for tag in StatusType], default='ACTIVE')
 
+    @property
+    def full_name(self):
+        return ' '.join(name for name in [self.salutation, self.first_name, self.middle_name, self.last_name] if name)
+
+    def __str__(self):
+        return self.full_name
+
     class Meta:
         db_table = 'user'
 
@@ -58,6 +65,10 @@ class PersonalInfo(models.Model):
                                       choices=[(tag.name, tag.value) for tag in MaritalStatusType],
                                       default='SINGLE')
 
+    def image_tag(self):
+        return u'<img src="{{ MEDIA_URL }}{path}" />'.format(path=self.headshot.upload_to)
+    image_tag.short_description = 'Headshot Image'
+
     class Meta:
         db_table = 'personal_info'
 
@@ -69,6 +80,7 @@ class Address(models.Model):
     addr3 = models.CharField(max_length=100, blank=True)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=30, blank=True)
+    zip = models.CharField(max_length=10, blank=True)
     country = models.CharField(max_length=30)
     status = models.CharField(max_length=10, choices=[(tag.name, tag.value) for tag in StatusType], default='ACTIVE')
 
@@ -88,6 +100,9 @@ class Phone(models.Model):
 class Quality(models.Model):
     id = models.AutoField(primary_key=True)
     value = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.value
 
     class Meta:
         db_table = 'quality'
@@ -165,6 +180,7 @@ class FamilyType(Enum):
 
 class Family(models.Model):
     id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     birthdate = models.DateField()
     relationship = models.CharField(max_length=20, choices=[(tag.name, tag.value) for tag in FamilyType])
