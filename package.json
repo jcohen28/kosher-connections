@@ -1,0 +1,35 @@
+{
+  "name": "kosher_connections",
+  "version": "1.0.0",
+  "description": "1. Clone this repo 2. Set up a virtual env using Python 3.6 ``` brew unlink python # ONLY if you have installed (with brew) another version of python 5 brew install --ignore-dependencies https://raw.githubusercontent.com/Homebrew/homebrew-core/f3a766ef944b1080be64bd88dca9a1d80130c558/Formula/python.rb python3 -m venv env source env/bin/activate pip install -r requirements.txt ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development ./project/frontend/src/index.js --output ./project/frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./project/frontend/src/index.js --output ./project/frontend/static/frontend/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcohen28/kosher_connections.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcohen28/kosher_connections/issues"
+  },
+  "homepage": "https://github.com/jcohen28/kosher_connections#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "weak-key": "^1.0.1",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  }
+}

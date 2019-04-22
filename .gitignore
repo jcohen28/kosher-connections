@@ -1,7 +1,8 @@
 env/*
 *__pycache__*
-.vscode/*
-media/*
+.vscode
+media
 .coverage
-htmlcov/*
+htmlcov
 .DS_Store
+node_modules

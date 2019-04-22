@@ -22,4 +22,5 @@ from social_network.admin import admin_site
 urlpatterns = [
     path('admin/', admin_site.urls),
     path('api/', include('social_network.urls')),
+    path('', include('frontend.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
