@@ -4,8 +4,8 @@ import DataProvider from "./DataProvider";
 import Table from "./Table";
 
 const App = () => (
-  <DataProvider endpoint="api/lead/"
-                render={data => <Table data={data} />} />
+  <DataProvider endpoint="api/user/"
+                render={data => <Table data={data.results} />} />
 );
 
 const wrapper = document.getElementById("app");

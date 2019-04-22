@@ -4,7 +4,10 @@ import key from "weak-key";
 
 const Table = ({ data }) =>
     !data.length ? (
-        <p>Nothing to show</p>
+        <div>
+            <h2>{data.length}</h2>
+            <p>Nothing to show</p>
+        </div>
     ) : (
         <div className="column">
             <h2 className="subtitle">
