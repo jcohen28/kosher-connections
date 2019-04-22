@@ -14,7 +14,7 @@ describe("Django REST framework / React quickstart app", () => {
         .get('input[name="first_name"]')
         .type(user.first_name)
         .should("have.value", user.first_name);
-    cy
+      cy
         .get('input[name="last_name"]')
         .type(user.last_name)
         .should("have.value", user.last_name);
@@ -23,6 +23,10 @@ describe("Django REST framework / React quickstart app", () => {
         .type(user.email)
         .should("have.value", user.email);
       cy.get("form").submit();
+    });
+    it("should be able to see the table", () => {
+      cy.visit("/");
+      cy.get("tr").contains(`${user.email}`);
     });
     // more tests here
   });

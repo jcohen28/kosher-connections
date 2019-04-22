@@ -1,10 +1,15 @@
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.viewsets import ModelViewSet
 
 from social_network.serializers import UserSerializer, PersonalInfoSerializer, AddressSerializer, PhoneSerializer, QualitySerializer, PersonalQualitySerializer, SeekingQualitySerializer, EndorsementSerializer, RecommendationSerializer, RelationshipSerializer, FamilySerializer, SchoolSerializer, ReferenceSerializer
 from social_network.models import User, PersonalInfo, Address, Phone, Quality, PersonalQuality, SeekingQuality, Endorsement, Recommendation, Relationship, Family, School, Reference
 
+class CsrfExemptSessionAuthentication(SessionAuthentication):
+    def enforce_csrf(self, request):
+        return
 
 class UserModelViewSet(ModelViewSet):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     queryset = User.objects.all()
     serializer_class = UserSerializer
 

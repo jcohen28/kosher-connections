@@ -22,8 +22,8 @@ class SalutationType(Enum):
 # Create your models here.
 class User(models.Model):
     id = models.AutoField(primary_key=True)
-    email = models.EmailField(max_length=100)
-    type = models.CharField(max_length=20)
+    email = models.EmailField(max_length=100, unique=True)
+    type = models.CharField(max_length=20, default='Dater')
     salutation = models.CharField(max_length=10, choices=[(tag.name, tag.value) for tag in SalutationType], blank=True)
     first_name = models.CharField(max_length=50)
     middle_name = models.CharField(max_length=100, blank=True)

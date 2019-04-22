@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.routers import SimpleRouter
 
 from social_network import views
